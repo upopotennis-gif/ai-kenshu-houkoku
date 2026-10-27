@@ -134,9 +134,14 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
 .qa .who { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; font-family: var(--f-head); font-weight: 900; font-size: 15px; background: var(--accent); color: var(--paper); }
 .qa .a .who { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); }
 .qa p { font-size: 15px; min-width: 0; }
-.toc { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 20px; }
-.toc a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--box); color: var(--ink); text-decoration: none; font-size: 14px; }
-.toc a:hover { border-color: var(--accent); color: var(--accent); }
+.toc { margin-top: 24px; display: grid; gap: 6px; }
+.toc-title { font-size: 14px; font-weight: 700; letter-spacing: .2em; color: var(--sub); }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; grid-auto-flow: column; grid-template-rows: repeat(6, auto); column-gap: 28px; border-top: 1px solid var(--line); }
+.toc li { border-bottom: 1px solid var(--line); min-width: 0; }
+.toc a { display: flex; align-items: center; gap: 12px; min-height: 44px; color: var(--ink); text-decoration: none; font-size: 15px; }
+.toc a:hover { color: var(--accent); }
+.toc .n { flex: none; width: 1.6em; font-family: var(--f-head); font-weight: 900; font-size: 14px; color: var(--accent); font-variant-numeric: tabular-nums; text-align: right; }
+@media (max-width: 640px) { .toc ol { grid-template-columns: 1fr; grid-auto-flow: row; grid-template-rows: none; } .toc a { min-height: 44px; } }
 section { scroll-margin-top: 12px; }
 .closing { border-top: 3px double var(--ink); border-bottom: 3px double var(--ink); padding-block: 18px; text-align: center; display: grid; gap: 6px; }
 .closing strong { font-family: var(--f-head); font-weight: 900; font-size: clamp(20px, 5vw, 26px); text-wrap: balance; }
@@ -178,7 +183,23 @@ section { scroll-margin-top: 12px; }
     <span>講師：認定NPO法人CLACK（mirAI for Japan）</span>
   </div>
 </header>
-<nav class="toc" aria-label="目次"><a href="#matome">3行で</a><a href="#shikumi">AIのしくみ</a><a href="#yakusoku">守る約束</a><a href="#tetsuduki">手続き</a><a href="#kotsu">頼み方</a><a href="#jitsurei">お願い文3つ</a><a href="#ippo">1週間で試す</a><a href="#koshi">講師のことば</a><a href="#shitsumon">質疑応答</a><a href="#dankai">4段階</a><a href="#ichiran">お願い文一覧</a><a href="#shiryo">資料</a></nav>
+<nav class="toc" aria-labelledby="toc-title">
+  <h2 id="toc-title" class="toc-title">目次</h2>
+  <ol>
+    <li><a href="#matome"><span class="n">1</span>研修でわかったこと</a></li>
+    <li><a href="#shikumi"><span class="n">2</span>AIはどこまで賢い？</a></li>
+    <li><a href="#yakusoku"><span class="n">3</span>使う前に守る3つ</a></li>
+    <li><a href="#tetsuduki"><span class="n">4</span>使い始めるまで</a></li>
+    <li><a href="#kotsu"><span class="n">5</span>頼み方のコツ</a></li>
+    <li><a href="#jitsurei"><span class="n">6</span>すぐ使えるお願い文3つ</a></li>
+    <li><a href="#ippo"><span class="n">7</span>1週間で試すなら</a></li>
+    <li><a href="#koshi"><span class="n">8</span>講師のことば</a></li>
+    <li><a href="#shitsumon"><span class="n">9</span>講師への質問</a></li>
+    <li><a href="#dankai"><span class="n">10</span>使い方の4段階</a></li>
+    <li><a href="#ichiran"><span class="n">11</span>お願い文の一覧</a></li>
+    <li><a href="#shiryo"><span class="n">12</span>もっと知りたい人へ</a></li>
+  </ol>
+</nav>
 
 <section id="matome">
   <h2><span class="no">3行で</span>研修でわかったこと</h2>
