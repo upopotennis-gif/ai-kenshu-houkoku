@@ -123,6 +123,21 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
 .stages .lv { font-size: 14px; font-weight: 700; color: var(--accent); }
 .stages li.now { border: 2px solid var(--accent); }
 .stages li.next { border: 2px dashed var(--accent); }
+.voice { display: grid; gap: 10px; }
+.voice blockquote { margin: 0; border-left: 3px solid var(--accent); background: var(--box); padding: 10px 14px; border-radius: 0 8px 8px 0; display: grid; gap: 4px; }
+.voice blockquote p { font-size: 15px; }
+.voice cite { font-style: normal; font-size: 14px; color: var(--sub); }
+.notice { border: 2px solid var(--warn); border-radius: 8px; padding: 14px 16px; display: grid; gap: 6px; background: var(--warn-soft); }
+.notice b { color: var(--warn); font-family: var(--f-head); }
+.qa { display: grid; gap: 10px; }
+.qa > div { display: grid; grid-template-columns: 32px 1fr; gap: 10px; align-items: start; }
+.qa .who { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; font-family: var(--f-head); font-weight: 900; font-size: 15px; background: var(--accent); color: var(--paper); }
+.qa .a .who { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); }
+.qa p { font-size: 15px; min-width: 0; }
+.toc { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 20px; }
+.toc a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--box); color: var(--ink); text-decoration: none; font-size: 14px; }
+.toc a:hover { border-color: var(--accent); color: var(--accent); }
+section { scroll-margin-top: 12px; }
 .closing { border-top: 3px double var(--ink); border-bottom: 3px double var(--ink); padding-block: 18px; text-align: center; display: grid; gap: 6px; }
 .closing strong { font-family: var(--f-head); font-weight: 900; font-size: clamp(20px, 5vw, 26px); text-wrap: balance; }
 .closing span { color: var(--sub); font-size: 14px; }
@@ -138,7 +153,7 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
   :root { --paper:#fff; --ink:#000; --sub:#333; --box:#fff; --code:#f4f4f4; --accent-soft:#eef2f8; --warn-soft:#fff; color-scheme: light; }
   body { font-size: 10.5pt; line-height: 1.65; }
   .wrap { padding: 0; max-width: none; }
-  .copy { display: none; }
+  .copy, .toc { display: none; }
   .copybox pre { max-height: none; overflow: visible; font-size: 9pt; padding-top: 10px; }
   .links a { padding-block: 0; min-height: 0; }
   section { padding-top: 18px; break-inside: auto; }
@@ -163,19 +178,20 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
     <span>講師：認定NPO法人CLACK（mirAI for Japan）</span>
   </div>
 </header>
+<nav class="toc" aria-label="目次"><a href="#matome">3行で</a><a href="#shikumi">AIのしくみ</a><a href="#yakusoku">守る約束</a><a href="#tetsuduki">手続き</a><a href="#kotsu">頼み方</a><a href="#jitsurei">お願い文3つ</a><a href="#ippo">1週間で試す</a><a href="#koshi">講師のことば</a><a href="#shitsumon">質疑応答</a><a href="#dankai">4段階</a><a href="#ichiran">お願い文一覧</a><a href="#shiryo">資料</a></nav>
 
-<section>
+<section id="matome">
   <h2><span class="no">3行で</span>研修でわかったこと</h2>
   <div class="summary">
     <ol>
-      <li>AIは<mark>「ゼロから考える時間」を減らす下書き係</mark>。仕上げと判断は先生がする。</li>
+      <li>AIは<mark>「ゼロから考える時間」を減らす下書き係</mark>。仕上げと判断は先生がする。「使うか使わないか」ではなく、「どう使うか」を考える時期に来ている。</li>
       <li>うまく使うコツは、AIへの頼み方。<mark>「誰として・何のために・どんな条件で・どんな形で」</mark>を書くだけで答えが変わる。</li>
       <li>研修では、そのまま写して使える<mark>「お願い文」が約40種類</mark>配られた。授業・担任・事務・部活と進路まで、ほぼ全部の場面にある。</li>
     </ol>
   </div>
 </section>
 
-<section>
+<section id="shikumi">
   <h2><span class="no">しくみ</span>AIはどこまで賢い？</h2>
   <p class="lead">研修の最初に紹介された数字です。2026年の共通テスト（東大受験科目・1000点満点）を、いまのAIに解かせた結果です。</p>
   <div class="stats">
@@ -190,7 +206,7 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
   </ul>
 </section>
 
-<section>
+<section id="yakusoku">
   <h2><span class="no">約束</span>使う前に守る3つ</h2>
   <p class="lead">川崎市の「利用前研修」と講師の資料の両方で、くり返し出てきたことです。あわせて、<b>入力した内容をAIに覚えさせない設定</b>で使うことも求められています。</p>
   <div class="rules">
@@ -205,9 +221,13 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
     <div class="ng"><b>問題集の代わりはNG</b><p>市販のドリルや問題集を買わなくて済むほど大量に作って配る、といった使い方は、出版社の利益をうばうのでだめ。</p></div>
   </div>
   <p class="note">生徒の家庭学習も同じ考え方です。自分の勉強に使うのはOK、作ったものを外に出す（SNSにのせる・配る）のはNG、やりすぎ（丸ごと読み込ませる）は注意。</p>
+  <div class="notice">
+    <b>川崎市のいまのルール：AIで作った画像は校外に出さない</b>
+    <p>研修の最後に、主催側から連絡がありました。AIで作った画像は、授業の中で使うのはよいが、学年通信・学級通信などで校外に出すことは、いまの情報・視聴覚センターのルールではできない、とのことです。11月ごろに緩和の通知が出る予定で、使えるようになったら管理職から連絡があるそうです。ルールは研修のClassroomにも載っています。</p>
+  </div>
 </section>
 
-<section>
+<section id="tetsuduki">
   <h2><span class="no">手続き</span>使い始めるまで</h2>
   <p class="lead">市立学校では、次の手順をふむと校務で使えるようになります。</p>
   <ol class="flow">
@@ -217,9 +237,10 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
     <li><b>使い始める</b>研修の約束を守って使う</li>
   </ol>
   <p class="note">使えるのは、学校のアカウントで入る <b>Copilot Chat</b>（マイクロソフト）と <b>Gemini・NotebookLM</b>（グーグル）。どれも「チャットで頼むと文章を返してくれる」道具です。チェックリストは研修資料（Plant「3チェックリスト」）か、SAINS-WEBの研修ページから入手できます。</p>
+  <p class="note"><b>仕事で使う前に、画面の表示を確かめる。</b>学校のアカウントで入ると、「入力した内容はAIの学習に使われない」ことを示す盾のマークなどの表示が出ます。講師は「家で料理の相談をするのとはちがう。仕事では、この表示があるアカウントで使ってほしい」と話していました。</p>
 </section>
 
-<section>
+<section id="kotsu">
   <h2><span class="no">コツ</span>頼み方で答えが変わる</h2>
   <p class="lead">講師が示した「伝わりやすい頼み方」は、5つの部品でできていました。</p>
   <div class="kotsu">
@@ -238,7 +259,7 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
   <p class="note">お願い文に出てくる「#」は見出しの印です。気にせずそのまま貼ってかまいません。「〇〇〇」のところだけ自分の内容に書きかえます。</p>
 </section>
 
-<section class="pb">
+<section id="jitsurei" class="pb">
   <h2><span class="no">実例</span>研修で特にあつかった3つ</h2>
   <p class="lead">時間がかかる仕事ほど効果が大きい、という話でした。下の箱の文をコピーして、〇〇〇を書きかえて使えます。</p>
 
@@ -259,7 +280,7 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
 ・解答
 ・解説
 ・誤答の分析</pre></div>
-    <p class="tip">授業で使ったプリントやスライドを添付して「この資料をもとに」と書くと、授業に合った問題になる。添付する前に名前などは消す。</p>
+    <p class="tip">授業で使ったプリントやスライドを添付して「この資料をもとに」と書くと、授業に合った問題になる。添付する前に名前などは消す。物足りなければ「国公立大レベルに」「共通テストを意識して」と言い返すと、作り直してくれる。</p>
   </div>
 
   <div class="card">
@@ -285,7 +306,7 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
 
 # 参照
 （自分が以前に書いた所見を1つ、名前を消して貼る）</pre></div>
-    <p class="tip">生徒の名前は入れない。特徴だけを書く。「参照」に自分の文を入れると、自分らしい書きぶりに近づく。</p>
+    <p class="tip">生徒の名前は入れない。特徴だけを書く。「参照」に自分が前に書いた所見を入れると、自分らしい書きぶりに近づく。クラス全員分は、特徴を表にまとめて（名前は入れない）添付すると一度に頼める。ただし40人分を一度に頼むと抜けが出やすいので、「1〜10番まで」のように分けて頼む。</p>
   </div>
 
   <div class="card">
@@ -314,22 +335,46 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
 【① 添削後の文章】
 【② 生徒への指導ポイント】
 【③ 主な修正箇所とその理由】</pre></div>
-    <p class="tip">①をそのまま渡すのではなく、②を面談で使うと、生徒が自分で書き直せる。</p>
+    <p class="tip">①をそのまま渡すのではなく、②を面談で使うと、生徒が自分で書き直せる。「添削ポイント」は例なので、学校や大学に合わせて足したり変えたりしてよい、と講師も話していた。</p>
   </div>
 </section>
 
-<section>
+<section id="ippo">
   <h2><span class="no">一歩</span>明日からの1週間で試すなら</h2>
   <p class="lead">いきなり授業で使わなくて大丈夫です。失敗しても困らないものから。</p>
   <div class="steps">
     <div class="step"><span class="day">まず</span><p>チェックリストを出して、使える状態にする。</p></div>
     <div class="step"><span class="day">1日目 5分</span><p><b>メールの文面</b>を頼んでみる。「以下の内容でメールの本文と件名を考えて。丁寧な敬語で、簡潔に」＋伝えたいことを箇条書き。</p></div>
     <div class="step"><span class="day">2〜3日目</span><p><b>小テストの問題</b>を作らせてみる。上の「4択問題」のお願い文をコピーして、単元名だけ書きかえる。</p></div>
-    <div class="step"><span class="day">週の後半</span><p>気に入らない答えが来たら、<b>「もっと短く」「高1向けに」「別の案を3つ」</b>と言い返してみる。何度でも直してくれるのが人との一番のちがい。</p></div>
+    <div class="step"><span class="day">週の後半</span><p>気に入らない答えが来たら、<b>「もっと短く」「高1向けに」「別の案を3つ」</b>と言い返してみる。何度でも直してくれるのが人との一番のちがい。最初から100点を期待しない。</p></div>
+    <div class="step"><span class="day">いつでも</span><p>話題が変わったら<b>「新しいチャット」</b>を開く。前の話が残っていると、答えがずれる。急ぐときは速いモード、正確さがほしいときはじっくり考えるモードを選ぶ。</p></div>
   </div>
 </section>
 
-<section>
+<section id="koshi">
+  <h2><span class="no">講師</span>研修で心に残ったことば</h2>
+  <p class="lead">研修の録音から、講師（認定NPO法人CLACK 宮脇裕貴さん）の話を要約しました。</p>
+  <div class="voice">
+    <blockquote><p>AIに任せるところは任せて、人にしかできないところに時間を使ってほしい。</p><cite>研修のはじめに</cite></blockquote>
+    <blockquote><p>AIが広がって先生の役わりがうすくなるのではなく、むしろ価値は高まる。出てきたものを見きわめ、子どもに何を届けるかを考えるのは先生だから。</p><cite>文部科学省のガイドラインの紹介で</cite></blockquote>
+    <blockquote><p>一度で完ぺきなものはねらわない。部分ごとに頼んで、会話しながら直して、最後に合わせる。自分も毎日そうしている。</p><cite>頼み方の練習のあとで</cite></blockquote>
+    <blockquote><p>配ったお願い文は、きっかけにすぎない。「これをAIに任せたらよかった」「このお願い文が効いた」と、先生どうしで話して広げてほしい。</p><cite>お願い文の一覧を紹介して</cite></blockquote>
+    <blockquote><p>読みきれない長い資料（文化庁の著作権の手引きなど）こそ、AIに読ませて「先生に関係するところだけまとめて」と頼めばよい。</p><cite>著作権の話の中で</cite></blockquote>
+    <blockquote><p>こわがらせて終わりたくない。正しくおそれたうえで、便利に使ってほしい。</p><cite>まとめで</cite></blockquote>
+  </div>
+</section>
+
+<section id="shitsumon">
+  <h2><span class="no">質問</span>講師への質問</h2>
+  <p class="lead">報告者が最後に質問しました。「続けにくさ」をどうするか、という質問です。</p>
+  <div class="qa">
+    <div class="q"><span class="who">問</span><p>お願い文をコピーして、〇〇〇のところを書きかえる。この手間で止まってしまう先生が多いと思います。よく使うお願い文をGemなどに入れて共有する、といった実例はありますか。</p></div>
+    <div class="a"><span class="who">答</span><p>学校ごとに作りこむことはしていないが、教科ごとに使える「専用のAI」は作っている。たとえば探究と数学を組み合わせたものでは、生徒の興味（「犬が好き」など）から、どんなデータを集めて分析すればよいかを一緒に考えてくれる。こうした専用のAIやGemを作って共有し、最初の一歩のハードルを下げるのは有効だと、多くの学校と話していて感じている。ただし、よい面だけではないことも考えておく必要がある。</p></div>
+  </div>
+  <p class="note">この答えを受けて、校内でもよく使うお願い文をGemにまとめて共有することを考えています（下の「4段階」の4にあたります）。</p>
+</section>
+
+<section id="dankai">
   <h2><span class="no">段階</span>AIの使い方の4段階　自分はいまどこ？</h2>
   <p class="lead">講師は、AIの使い方を4つの段階に分けて示しました。段階に上下はなく、場面に合わせて選べばよい、という話でした。</p>
   <ol class="stages">
@@ -348,7 +393,7 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
   </div>
 </section>
 
-<section>
+<section id="ichiran">
   <h2><span class="no">一覧</span>配られたお願い文（約40種類）</h2>
   <p class="lead"><span class="star">★</span>は研修で特にあつかったもの。全文は研修資料「プロンプト一覧」にあります。</p>
   <div class="list">
@@ -390,7 +435,7 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
   </div>
 </section>
 
-<section>
+<section id="shiryo">
   <h2><span class="no">資料</span>もっと知りたい人へ</h2>
   <ul class="links">
     <li><a class="url" href="https://docs.google.com/document/d/1nufbWmth5cE93h3SpAYhZ-cUX29dHbJVQ83CNYy8FzU/edit" target="_blank" rel="noopener">研修資料：お願い文（プロンプト）一覧</a></li>
@@ -403,7 +448,7 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
   <p class="note screen-only">研修資料のリンクが開けない場合は、報告者に声をかけてください。</p>
 </section>
 
-<footer>この報告は、研修で配られた資料（講師スライド・お願い文一覧）と、川崎市総合教育センター 情報・視聴覚センター「生成AI利用前研修」資料をもとにまとめました。</footer>
+<footer>この報告は、研修で配られた資料（講師スライド・お願い文一覧）、研修の録音と、川崎市総合教育センター 情報・視聴覚センター「生成AI利用前研修」資料をもとにまとめました。</footer>
 </div>
 
 <script>
