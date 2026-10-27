@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>生成AI研修 参加報告</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap">
+<style>
+/* 校内配布プリントのような1段組。マーカー線で要点を示し、お願い文は写せる箱に入れる */
+:root {
+  --paper: #fbfbf8;
+  --ink: #1f2733;
+  --sub: #5a6472;
+  --line: #d9dde3;
+  --accent: #24508a;
+  --accent-soft: #e8eef7;
+  --marker: #ffe58a;
+  --warn: #b3361f;
+  --warn-soft: #fbece8;
+  --box: #ffffff;
+  --code: #f3f4f1;
+  --f-head: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --f-body: "BIZ UDPGothic", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #161b22; --ink: #e6e9ee; --sub: #a3acb9; --line: #333c48;
+  --accent: #8fb4ea; --accent-soft: #1e2a3b; --marker: #6b5a12;
+  --warn: #f29b85; --warn-soft: #3a211b; --box: #1c222b; --code: #222932;
+  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --paper: #161b22; --ink: #e6e9ee; --sub: #a3acb9; --line: #333c48;
+  --accent: #8fb4ea; --accent-soft: #1e2a3b; --marker: #6b5a12;
+  --warn: #f29b85; --warn-soft: #3a211b; --box: #1c222b; --code: #222932;
+  color-scheme: dark }
+
+body { background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.85; }
+.wrap { max-width: 760px; margin: 0 auto; padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--f-head); line-height: 1.4; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+mark { white-space: nowrap; background: linear-gradient(transparent 55%, var(--marker) 55%); color: inherit; padding: 0 2px; }
+
+header { border-bottom: 3px double var(--ink); padding-bottom: 20px; display: grid; gap: 10px; }
+.eyebrow { font-size: 14px; letter-spacing: .12em; color: var(--sub); }
+h1 { font-size: clamp(26px, 6vw, 36px); font-weight: 900; }
+h1 .ph { display: inline-block; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--sub); }
+
+section { padding-top: 40px; display: grid; gap: 16px; }
+h2 { font-size: 22px; font-weight: 900; display: flex; align-items: baseline; gap: 10px; }
+h2 .no { font-size: 14px; color: var(--paper); background: var(--accent); border-radius: 4px; padding: 1px 8px; font-weight: 700; flex: none; }
+h3 { font-size: 17px; font-weight: 700; }
+.lead { color: var(--sub); }
+
+.summary { background: var(--accent-soft); border-radius: 8px; padding: 18px 20px; }
+.summary mark { white-space: normal; }
+.summary ol { margin: 0; padding-left: 1.4em; display: grid; gap: 6px; }
+
+.rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.rule { border: 1.5px solid var(--warn); background: var(--warn-soft); border-radius: 8px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.rule .when { font-size: 14px; font-weight: 700; color: var(--warn); letter-spacing: .08em; }
+.rule strong { font-family: var(--f-head); font-size: 18px; }
+.rule p { font-size: 14px; }
+
+.flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; counter-reset: f; }
+.flow li { counter-increment: f; border: 1px solid var(--line); background: var(--box); border-radius: 8px; padding: 12px; font-size: 14px; position: relative; min-width: 0; }
+.flow li::before { content: counter(f); display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: var(--paper); font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+.flow b { display: block; font-size: 15px; }
+.note { font-size: 14px; color: var(--sub); }
+
+.kotsu { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.kotsu > div { border-top: 3px solid var(--accent); background: var(--box); padding: 12px 14px; border-radius: 0 0 8px 8px; min-width: 0; }
+.kotsu b { display: block; font-family: var(--f-head); }
+.kotsu span { font-size: 14px; color: var(--sub); }
+
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.compare > div { border: 1px solid var(--line); border-radius: 8px; padding: 14px; background: var(--box); min-width: 0; }
+.compare .tag { font-size: 14px; font-weight: 700; color: var(--sub); }
+.compare .good .tag { color: var(--accent); }
+.compare .good { border-color: var(--accent); }
+
+.card { border: 1px solid var(--line); background: var(--box); border-radius: 10px; padding: 18px; display: grid; gap: 10px; min-width: 0; }
+.card .scene { font-size: 14px; color: var(--sub); }
+.copybox { position: relative; }
+.copybox pre { margin: 0; background: var(--code); border-radius: 6px; padding: 56px 14px 14px; font-family: var(--f-body); font-size: 14px; line-height: 1.7; white-space: pre-wrap; word-break: break-word; max-height: 300px; overflow: auto; }
+.copy { position: absolute; top: 6px; right: 6px; font: inherit; font-size: 15px; min-height: 44px; padding: 6px 18px; border-radius: 999px; border: 1px solid var(--accent); background: var(--box); color: var(--accent); cursor: pointer; }
+.copy:hover { background: var(--accent-soft); }
+.tip { font-size: 14px; }
+.tip::before { content: "ポイント："; font-weight: 700; color: var(--accent); }
+
+.steps { display: grid; gap: 12px; }
+.step { display: grid; grid-template-columns: 88px 1fr; gap: 14px; align-items: start; border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; }
+.step .day { font-family: var(--f-head); font-weight: 900; color: var(--accent); font-size: 15px; }
+.step p { font-size: 15px; }
+
+.list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; }
+.list > div { min-width: 0; }
+.list h3 { font-size: 15px; border-bottom: 1px solid var(--line); padding-bottom: 4px; margin-bottom: 6px; }
+.list ul { margin: 0; padding-left: 1.2em; font-size: 14px; line-height: 1.75; }
+.star { color: var(--warn); font-weight: 700; }
+
+.links { margin: 0; padding-left: 1.2em; display: grid; gap: 2px; font-size: 15px; }
+.links a { display: inline-block; padding-block: 10px; min-height: 44px; box-sizing: border-box; }
+footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; color: var(--sub); }
+
+@media (max-width: 640px) {
+  .rules, .kotsu, .compare, .list { grid-template-columns: 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+  .step { grid-template-columns: 1fr; gap: 2px; }
+}
+@media print {
+  @page { size: A4; margin: 14mm 14mm; }
+  :root { --paper:#fff; --ink:#000; --sub:#333; --box:#fff; --code:#f4f4f4; --accent-soft:#eef2f8; --warn-soft:#fff; color-scheme: light; }
+  body { font-size: 10.5pt; line-height: 1.65; }
+  .wrap { padding: 0; max-width: none; }
+  .copy { display: none; }
+  .copybox pre { max-height: none; overflow: visible; font-size: 9pt; padding-top: 10px; }
+  .links a { padding-block: 0; min-height: 0; }
+  section { padding-top: 18px; break-inside: auto; }
+  .card, .rule, .flow li, .step, .compare > div { break-inside: avoid; }
+  h2 { break-after: avoid; }
+  .pb { break-before: page; }
+  a { color: inherit; text-decoration: none; }
+  a.url::after { content: "（" attr(href) "）"; font-size: 8pt; word-break: break-all; }
+  .screen-only { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">校外研修 参加報告｜先生方へのおすそわけ</div>
+  <h1><span class="ph">生成AI、まずは</span><span class="ph"><mark>「下書き係」</mark>として</span><span class="ph">使ってみませんか</span></h1>
+  <div class="meta">
+    <span>研修：教職員向け 生成AI活用研修</span>
+    <span>日時：2026年10月27日</span>
+    <span>会場：川崎市立橘高等学校</span>
+  </div>
+</header>
+
+<section>
+  <h2><span class="no">3行で</span>研修でわかったこと</h2>
+  <div class="summary">
+    <ol>
+      <li>AIは<mark>「ゼロから考える時間」を減らす下書き係</mark>。仕上げと判断は先生がする。</li>
+      <li>うまく使うコツは、AIへの頼み方。<mark>「誰として・何のために・どんな条件で・どんな形で」</mark>を書くだけで答えが変わる。</li>
+      <li>研修では、そのまま写して使える<mark>「お願い文」が約40種類</mark>配られた。授業・担任・事務・部活と進路まで、ほぼ全部の場面にある。</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h2><span class="no">約束</span>使う前に守る3つ</h2>
+  <p class="lead">川崎市の「利用前研修」の資料で、一番大きく書かれていたことです。あわせて、<b>入力した内容をAIに覚えさせない設定</b>で使うことも求められています。</p>
+  <div class="rules">
+    <div class="rule"><span class="when">入れるとき</span><strong>個人情報は入れない</strong><p>生徒の名前・成績・住所、外に出せない情報は書かない。名前は「生徒A」などに置きかえる。</p></div>
+    <div class="rule"><span class="when">できあがったとき</span><strong>中身は必ず確かめる</strong><p>AIはまちがいをもっともらしく書くことがある。事実・数字・人名は自分で確認する。</p></div>
+    <div class="rule"><span class="when">使うとき</span><strong>他人の作品をまねない</strong><p>できた文章や絵が、誰かの作品とそっくりになっていないか見てから使う。</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="no">手続き</span>使い始めるまで</h2>
+  <p class="lead">市立学校では、次の手順をふむと校務で使えるようになります。</p>
+  <ol class="flow">
+    <li><b>利用前研修を受ける</b>市の研修スライドを見る</li>
+    <li><b>チェックリストを出す</b>校長へ提出する</li>
+    <li><b>校長が確認・承認</b>使ってよいと伝えられる</li>
+    <li><b>使い始める</b>研修の約束を守って使う</li>
+  </ol>
+  <p class="note">使えるのは、学校のアカウントで入る <b>Copilot Chat</b>（マイクロソフト）と <b>Gemini・NotebookLM</b>（グーグル）。どれも「チャットで頼むと文章を返してくれる」道具です。チェックリストは研修資料（Plant「3チェックリスト」）か、SAINS-WEBの研修ページから入手できます。</p>
+</section>
+
+<section>
+  <h2><span class="no">コツ</span>頼み方で答えが変わる</h2>
+  <p class="lead">配られたお願い文は、どれも同じ4つの部品でできていました。</p>
+  <div class="kotsu">
+    <div><b>① 役わりを決める</b><span>「あなたは高校2年の担任です」</span></div>
+    <div><b>② 何をしてほしいか</b><span>「保護者会のあいさつ文を作って」</span></div>
+    <div><b>③ 条件をつける</b><span>「3分くらい」「自己紹介・クラスの様子・今後の3部」</span></div>
+    <div><b>④ 答えの形を決める</b><span>「表で」「3案出して」「理由も書いて」</span></div>
+  </div>
+  <div class="compare">
+    <div><span class="tag">ふつうの頼み方</span><p>保護者会のあいさつを書いて。</p><p class="note">→ どこの学校でも使える、ぼんやりした文になる。</p></div>
+    <div class="good"><span class="tag">4つの部品を入れた頼み方</span><p>あなたは高校1年の担任です。保護者会のあいさつを、3分程度で、自己紹介・クラスの様子・今後の方針の順に書いてください。「一緒に育てていきたい」という気持ちを伝えたいです。</p><p class="note">→ そのまま手直しに入れる下書きになる。</p></div>
+  </div>
+  <p class="note">お願い文に出てくる「#」は見出しの印です。気にせずそのまま貼ってかまいません。「〇〇〇」のところだけ自分の内容に書きかえます。</p>
+</section>
+
+<section class="pb">
+  <h2><span class="no">実例</span>研修で特にあつかった3つ</h2>
+  <p class="lead">時間がかかる仕事ほど効果が大きい、という話でした。下の箱の文をコピーして、〇〇〇を書きかえて使えます。</p>
+
+  <div class="card">
+    <span class="scene">授業｜小テスト・練習問題づくり</span>
+    <h3>まちがえやすい所をつく4択問題を作る</h3>
+    <div class="copybox"><button class="copy" type="button">コピー</button><pre># 依頼
+あなたは日本の高校で〇年生の〇〇〇の授業を担当する教員です。
+生徒向けの練習問題として、〇〇〇に関する選択問題を作成してください。
+
+# ルール
+・間違いの選択肢は「生徒が陥りやすい勘違い」に基づいて作成すること。
+・各問題に、正解だけでなく「なぜその誤答を選んでしまうのか」という解説をつけること。
+
+# 出力形式
+・問題文
+・AからDまでの4択の選択肢
+・解答
+・解説
+・誤答の分析</pre></div>
+    <p class="tip">授業で使ったプリントやスライドを添付して「この資料をもとに」と書くと、授業に合った問題になる。添付する前に名前などは消す。</p>
+  </div>
+
+  <div class="card">
+    <span class="scene">担任｜通知表・指導要録の所見</span>
+    <h3>所見の文例を3案もらう</h3>
+    <div class="copybox"><button class="copy" type="button">コピー</button><pre># 依頼
+あなたは高等学校〇年生のベテラン担任です。
+次のルールを必ず守り、生徒の特徴をもとに、高校の通知表の所見を表形式で出力してください。
+
+# 生徒の特徴
+・〇〇〇（性格）
+・〇〇〇（係・委員会・部活など）
+・〇〇〇（がんばっていること）
+
+# ルール
+・案は3個挙げてください。
+・250〜300文字で書いてください。
+・参照の文を例にしてください。
+
+# 形式
+・表形式
+・列は「案1」「案2」「案3」
+
+# 参照
+（自分が以前に書いた所見を1つ、名前を消して貼る）</pre></div>
+    <p class="tip">生徒の名前は入れない。特徴だけを書く。「参照」に自分の文を入れると、自分らしい書きぶりに近づく。</p>
+  </div>
+
+  <div class="card">
+    <span class="scene">進路｜志望理由書を見るとき</span>
+    <h3>志望理由書の添削と、生徒へのアドバイスを分けて出す</h3>
+    <div class="copybox"><button class="copy" type="button">コピー</button><pre># 依頼
+あなたは高校生の志望理由書を専門に添削・指導するプロの指導者です。
+高校生が【〇〇大学〇〇学部】に提出するために書いた志望理由書を、添削ポイントと添削方針に基づいて丁寧に添削してください。
+
+# 志望理由（原文）
+〇〇〇
+
+# 添削ポイント
+1. 進学・就職の目的がはっきりしているか
+2. 相手（学校・学部・企業）のことを調べた跡があるか
+3. 本人の具体的な経験が入っているか
+4. 導入→理由→経験→将来 の順で自然に読めるか
+5. 将来の姿と志望先がつながっているか
+
+# 添削方針
+・高校生らしい表現は残し、幼すぎる表現は直す
+・内容が薄いときは、何を足せばよいかを指導として示す
+・書きかえすぎず、「なぜ直すのか」をはっきりさせる
+
+# 出力形式
+【① 添削後の文章】
+【② 生徒への指導ポイント】
+【③ 主な修正箇所とその理由】</pre></div>
+    <p class="tip">①をそのまま渡すのではなく、②を面談で使うと、生徒が自分で書き直せる。</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="no">一歩</span>明日からの1週間で試すなら</h2>
+  <p class="lead">いきなり授業で使わなくて大丈夫です。失敗しても困らないものから。</p>
+  <div class="steps">
+    <div class="step"><span class="day">まず</span><p>チェックリストを出して、使える状態にする。</p></div>
+    <div class="step"><span class="day">1日目 5分</span><p><b>メールの文面</b>を頼んでみる。「以下の内容でメールの本文と件名を考えて。丁寧な敬語で、簡潔に」＋伝えたいことを箇条書き。</p></div>
+    <div class="step"><span class="day">2〜3日目</span><p><b>小テストの問題</b>を作らせてみる。上の「4択問題」のお願い文をコピーして、単元名だけ書きかえる。</p></div>
+    <div class="step"><span class="day">週の後半</span><p>気に入らない答えが来たら、<b>「もっと短く」「高1向けに」「別の案を3つ」</b>と言い返してみる。何度でも直してくれるのが人との一番のちがい。</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="no">一覧</span>配られたお願い文（約40種類）</h2>
+  <p class="lead"><span class="star">★</span>は研修で特にあつかったもの。全文は研修資料「プロンプト一覧」にあります。</p>
+  <div class="list">
+    <div><h3>授業</h3><ul>
+      <li>単元の指導計画／1時間の授業案</li>
+      <li>授業の始めに興味を引く話（3案）</li>
+      <li>生徒から出そうな質問の洗い出し</li>
+      <li>スライドの構成案</li>
+      <li><span class="star">★</span>問題づくり／資料からの問題づくり／似た問題づくり</li>
+      <li>評価の観点表（A・B・C）づくり</li>
+      <li>文章の手直し・翻訳、小論文・英作文の添削</li>
+      <li>記述問題の採点、テスト結果の分析</li>
+      <li>話し合い活動の設計、探究の問いを一緒に考える相談相手（生徒用）</li>
+    </ul></div>
+    <div><h3>担任</h3><ul>
+      <li>文化祭の企画タイトル案（LHR用）</li>
+      <li>学年目標・スローガン案</li>
+      <li>席がえの座席表</li>
+      <li>あいさつ原稿、保護者向けプリント、学年・学級通信</li>
+      <li>校外学習の行程表</li>
+      <li>メールの文面・返信</li>
+      <li>面談で使う質問リスト、ふり返りシート</li>
+      <li><span class="star">★</span>通知表・指導要録の所見の文例</li>
+      <li>アンケート結果の分析</li>
+    </ul></div>
+    <div><h3>事務</h3><ul>
+      <li>Excelの計算式づくり</li>
+      <li>保護者からの意見への返信文</li>
+      <li>購入・導入のための稟議書</li>
+      <li>自己評価シートの方策づくり</li>
+    </ul></div>
+    <div><h3>部活動・進路</h3><ul>
+      <li>練習メニュー、試合前の気持ちの整え方</li>
+      <li><span class="star">★</span>志望理由書の添削</li>
+      <li>模擬面接の質問と流れ</li>
+      <li>大学への推薦書のたたき台</li>
+      <li>進路を考える・オープンキャンパスの準備（生徒用）</li>
+    </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="no">資料</span>もっと知りたい人へ</h2>
+  <ul class="links">
+    <li><a class="url" href="https://docs.google.com/document/d/1nufbWmth5cE93h3SpAYhZ-cUX29dHbJVQ83CNYy8FzU/edit" target="_blank" rel="noopener">研修資料：お願い文（プロンプト）一覧</a></li>
+    <li><a class="url" href="https://leadingdxschool.mext.go.jp/files/achieve_r5/ai/291000_05.pdf" target="_blank" rel="noopener">他校の例①　指導要録づくりの補助</a></li>
+    <li><a class="url" href="https://leadingdxschool.mext.go.jp/files/achieve_r5/ai/272140_06.pdf" target="_blank" rel="noopener">他校の例②　進路指導での活用</a></li>
+    <li><a class="url" href="https://leadingdxschool.mext.go.jp/files/achieve_r5/ai/071000_04.pdf" target="_blank" rel="noopener">他校の例③　部活動の練習メニューづくり</a></li>
+    <li><a class="url" href="https://www.mext.go.jp/a_menu/other/mext_02412.html" target="_blank" rel="noopener">文部科学省　生成AIの利用に関するガイドライン</a></li>
+    <li><a class="url" href="https://www.bunka.go.jp/seisaku/chosakuken/aiandcopyright.html" target="_blank" rel="noopener">文化庁　AIと著作権について</a></li>
+  </ul>
+  <p class="note screen-only">研修資料のリンクが開けない場合は、報告者に声をかけてください。</p>
+</section>
+
+<footer>この報告は、研修で配られた資料と、川崎市総合教育センター 情報・視聴覚センター「生成AI利用前研修」資料をもとにまとめました。</footer>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var pre = btn.parentElement.querySelector('pre');
+    var done = function () { btn.textContent = 'コピーしました'; setTimeout(function () { btn.textContent = 'コピー'; }, 1600); };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(pre);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = '選択しました。⌘C / Ctrl+C でコピー';
+    };
+    try { navigator.clipboard.writeText(pre.innerText).then(done, fallback); } catch (e) { fallback(); }
+  });
+});
+</script>
+</body>
+</html>
