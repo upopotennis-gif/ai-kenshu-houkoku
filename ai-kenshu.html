@@ -103,8 +103,33 @@ h3 { font-size: 17px; font-weight: 700; }
 .links a { display: inline-block; padding-block: 10px; min-height: 44px; box-sizing: border-box; }
 footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; color: var(--sub); }
 
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.stat { background: var(--box); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 2px; min-width: 0; }
+.stat .k { font-size: 14px; color: var(--sub); }
+.stat .v { white-space: nowrap; font-family: var(--f-head); font-weight: 900; font-size: clamp(22px, 6vw, 28px); font-variant-numeric: tabular-nums; line-height: 1.3; }
+.stat .v small { font-size: 15px; font-weight: 700; color: var(--sub); }
+.src { font-size: 14px; color: var(--sub); }
+.points { margin: 0; padding-left: 1.3em; display: grid; gap: 8px; }
+.okng { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.okng > div { border-radius: 8px; padding: 12px 14px; min-width: 0; }
+.okng .ok { background: var(--accent-soft); }
+.okng .ng { background: var(--warn-soft); border: 1px solid var(--warn); }
+.okng b { display: block; font-family: var(--f-head); }
+.okng .ng b { color: var(--warn); }
+.okng p { font-size: 15px; }
+.stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.stages li { border: 1px solid var(--line); background: var(--box); border-radius: 8px; padding: 12px; display: grid; gap: 4px; align-content: start; min-width: 0; font-size: 14px; }
+.stages li b { font-family: var(--f-head); font-size: 16px; }
+.stages .lv { font-size: 14px; font-weight: 700; color: var(--accent); }
+.stages li.now { border: 2px solid var(--accent); }
+.stages li.next { border: 2px dashed var(--accent); }
+.closing { border-top: 3px double var(--ink); border-bottom: 3px double var(--ink); padding-block: 18px; text-align: center; display: grid; gap: 6px; }
+.closing strong { font-family: var(--f-head); font-weight: 900; font-size: clamp(20px, 5vw, 26px); text-wrap: balance; }
+.closing span { color: var(--sub); font-size: 14px; }
+
 @media (max-width: 640px) {
-  .rules, .kotsu, .compare, .list { grid-template-columns: 1fr; }
+  .rules, .kotsu, .compare, .list, .okng { grid-template-columns: 1fr; }
+  .stages { grid-template-columns: 1fr 1fr; }
   .flow { grid-template-columns: 1fr 1fr; }
   .step { grid-template-columns: 1fr; gap: 2px; }
 }
@@ -135,6 +160,7 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
     <span>研修：教職員向け 生成AI活用研修</span>
     <span>日時：2026年10月27日</span>
     <span>会場：川崎市立橘高等学校</span>
+    <span>講師：認定NPO法人CLACK（mirAI for Japan）</span>
   </div>
 </header>
 
@@ -150,13 +176,35 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
 </section>
 
 <section>
+  <h2><span class="no">しくみ</span>AIはどこまで賢い？</h2>
+  <p class="lead">研修の最初に紹介された数字です。2026年の共通テスト（東大受験科目・1000点満点）を、いまのAIに解かせた結果です。</p>
+  <div class="stats">
+    <div class="stat"><span class="k">文系</span><span class="v">937〜970<small> 点</small></span></div>
+    <div class="stat"><span class="k">理系</span><span class="v">909〜968<small> 点</small></span></div>
+  </div>
+  <p class="src">3社のAI（ChatGPT・Gemini・Claude）の結果。出典：株式会社LifePrompt の検証（2026年1月、研修資料より）。</p>
+  <p>それでも、AIの答えをそのまま信じてはいけない理由も説明されました。</p>
+  <ul class="points">
+    <li>AIは意味を考えて答えているのではなく、<mark>「次に来そうな言葉」をつないでいる</mark>。だから、まちがいをもっともらしく言うことがある。研修では「水は何度で沸騰しますか」に「−15度で沸騰します」と答えた画面が紹介された。</li>
+    <li>答えに<mark>かたより</mark>が出ることがある。「政治家の絵」を頼むと男性ばかり、「看護師の絵」を頼むと女性ばかりになる例が示された。</li>
+  </ul>
+</section>
+
+<section>
   <h2><span class="no">約束</span>使う前に守る3つ</h2>
-  <p class="lead">川崎市の「利用前研修」の資料で、一番大きく書かれていたことです。あわせて、<b>入力した内容をAIに覚えさせない設定</b>で使うことも求められています。</p>
+  <p class="lead">川崎市の「利用前研修」と講師の資料の両方で、くり返し出てきたことです。あわせて、<b>入力した内容をAIに覚えさせない設定</b>で使うことも求められています。</p>
   <div class="rules">
     <div class="rule"><span class="when">入れるとき</span><strong>個人情報は入れない</strong><p>生徒の名前・成績・住所、外に出せない情報は書かない。名前は「生徒A」などに置きかえる。</p></div>
     <div class="rule"><span class="when">できあがったとき</span><strong>中身は必ず確かめる</strong><p>AIはまちがいをもっともらしく書くことがある。事実・数字・人名は自分で確認する。</p></div>
     <div class="rule"><span class="when">使うとき</span><strong>他人の作品をまねない</strong><p>できた文章や絵が、誰かの作品とそっくりになっていないか見てから使う。</p></div>
   </div>
+  <p>実際に、東京都の高校で、文化祭のパンフレットの絵をAIで作って配ったところ、あるイラストレーターの絵とそっくりで問題になった例が紹介されました。</p>
+  <h3>教科書をAIに読み込ませて問題を作ってもいい？</h3>
+  <div class="okng">
+    <div class="ok"><b>授業で使うためならOK</b><p>授業の問題やワークシートを作るために、教科書や資料を読み込ませるのは、原則として認められている（著作権法35条）。</p></div>
+    <div class="ng"><b>問題集の代わりはNG</b><p>市販のドリルや問題集を買わなくて済むほど大量に作って配る、といった使い方は、出版社の利益をうばうのでだめ。</p></div>
+  </div>
+  <p class="note">生徒の家庭学習も同じ考え方です。自分の勉強に使うのはOK、作ったものを外に出す（SNSにのせる・配る）のはNG、やりすぎ（丸ごと読み込ませる）は注意。</p>
 </section>
 
 <section>
@@ -173,17 +221,20 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
 
 <section>
   <h2><span class="no">コツ</span>頼み方で答えが変わる</h2>
-  <p class="lead">配られたお願い文は、どれも同じ4つの部品でできていました。</p>
+  <p class="lead">講師が示した「伝わりやすい頼み方」は、5つの部品でできていました。</p>
   <div class="kotsu">
-    <div><b>① 役わりを決める</b><span>「あなたは高校2年の担任です」</span></div>
-    <div><b>② 何をしてほしいか</b><span>「保護者会のあいさつ文を作って」</span></div>
-    <div><b>③ 条件をつける</b><span>「3分くらい」「自己紹介・クラスの様子・今後の3部」</span></div>
-    <div><b>④ 答えの形を決める</b><span>「表で」「3案出して」「理由も書いて」</span></div>
+    <div><b>① 役わりを決める</b><span>「あなたは普通科高校の親切な講師です」</span></div>
+    <div><b>② 相手を書く</b><span>「14歳の生徒に向けて」</span></div>
+    <div><b>③ 状況を書く</b><span>「生物の試験の準備として」</span></div>
+    <div><b>④ してほしいことを書く</b><span>「光合成のしくみを説明して」</span></div>
+    <div><b>⑤ 字数や口調を決める</b><span>「300字で、授業らしい口調で」</span></div>
+    <div><b>コツは3つ</b><span>はっきり・具体的に・何度も試す</span></div>
   </div>
   <div class="compare">
     <div><span class="tag">ふつうの頼み方</span><p>保護者会のあいさつを書いて。</p><p class="note">→ どこの学校でも使える、ぼんやりした文になる。</p></div>
-    <div class="good"><span class="tag">4つの部品を入れた頼み方</span><p>あなたは高校1年の担任です。保護者会のあいさつを、3分程度で、自己紹介・クラスの様子・今後の方針の順に書いてください。「一緒に育てていきたい」という気持ちを伝えたいです。</p><p class="note">→ そのまま手直しに入れる下書きになる。</p></div>
+    <div class="good"><span class="tag">部品を入れた頼み方</span><p>あなたは高校1年の担任です。保護者会のあいさつを、3分程度で、自己紹介・クラスの様子・今後の方針の順に書いてください。「一緒に育てていきたい」という気持ちを伝えたいです。</p><p class="note">→ そのまま手直しに入れる下書きになる。</p></div>
   </div>
+  <p class="note">入力欄で改行するときは <b>Shift＋Enter</b>。Enterだけだと、途中で送ってしまいます。多少の誤字や、整っていない文でもAIは読み取ってくれます。</p>
   <p class="note">お願い文に出てくる「#」は見出しの印です。気にせずそのまま貼ってかまいません。「〇〇〇」のところだけ自分の内容に書きかえます。</p>
 </section>
 
@@ -279,6 +330,25 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
 </section>
 
 <section>
+  <h2><span class="no">段階</span>AIの使い方の4段階　自分はいまどこ？</h2>
+  <p class="lead">講師は、AIの使い方を4つの段階に分けて示しました。段階に上下はなく、場面に合わせて選べばよい、という話でした。</p>
+  <ol class="stages">
+    <li><span class="lv">1</span><b>調べる・話す</b>知りたいことを聞く。考えを整理する。</li>
+    <li class="now"><span class="lv">2　研修の中心</span><b>頼む</b>条件をつけて、下書きや案を作ってもらう。</li>
+    <li class="next"><span class="lv">3　次の目標</span><b>いっしょに磨く</b>「もっと短く」「別の案を」と言い返して、何度も直す。</li>
+    <li><span class="lv">4</span><b>くり返しを仕組みにする</b>よく使う頼み方をしまっておき、毎回同じ流れで使う。</li>
+  </ol>
+  <p class="note">4の例：Geminiの「Gem」という機能に、よく使うお願い文を登録しておくと、毎回コピーして貼らずに済みます。登録したものは同僚と共有することもできます。</p>
+</section>
+
+<section>
+  <div class="closing">
+    <strong>AIを信用しすぎない、AIに任せきらない</strong>
+    <span>講師のまとめのことば。事実の確認と最後の判断は、人がする。</span>
+  </div>
+</section>
+
+<section>
   <h2><span class="no">一覧</span>配られたお願い文（約40種類）</h2>
   <p class="lead"><span class="star">★</span>は研修で特にあつかったもの。全文は研修資料「プロンプト一覧」にあります。</p>
   <div class="list">
@@ -333,7 +403,7 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
   <p class="note screen-only">研修資料のリンクが開けない場合は、報告者に声をかけてください。</p>
 </section>
 
-<footer>この報告は、研修で配られた資料と、川崎市総合教育センター 情報・視聴覚センター「生成AI利用前研修」資料をもとにまとめました。</footer>
+<footer>この報告は、研修で配られた資料（講師スライド・お願い文一覧）と、川崎市総合教育センター 情報・視聴覚センター「生成AI利用前研修」資料をもとにまとめました。</footer>
 </div>
 
 <script>
