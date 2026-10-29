@@ -81,10 +81,6 @@ h3 { font-size: 17px; font-weight: 700; }
 
 .card { border: 1px solid var(--line); background: var(--box); border-radius: 10px; padding: 18px; display: grid; gap: 10px; min-width: 0; }
 .card .scene { font-size: 14px; color: var(--sub); }
-.copybox { position: relative; }
-.copybox pre { margin: 0; background: var(--code); border-radius: 6px; padding: 56px 14px 14px; font-family: var(--f-body); font-size: 14px; line-height: 1.7; white-space: pre-wrap; word-break: break-word; max-height: 300px; overflow: auto; }
-.copy { position: absolute; top: 6px; right: 6px; font: inherit; font-size: 15px; min-height: 44px; padding: 6px 18px; border-radius: 999px; border: 1px solid var(--accent); background: var(--box); color: var(--accent); cursor: pointer; }
-.copy:hover { background: var(--accent-soft); }
 .tip { font-size: 14px; }
 .tip::before { content: "ポイント："; font-weight: 700; color: var(--accent); }
 
@@ -127,6 +123,9 @@ footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line);
 .voice blockquote { margin: 0; border-left: 3px solid var(--accent); background: var(--box); padding: 10px 14px; border-radius: 0 8px 8px 0; display: grid; gap: 4px; }
 .voice blockquote p { font-size: 15px; }
 .voice cite { font-style: normal; font-size: 14px; color: var(--sub); }
+.disclaimer { margin-top: 14px; font-size: 14px; color: var(--sub); border-left: 3px solid var(--line); padding: 2px 0 2px 12px; }
+.invite { border: 2px solid var(--accent); border-radius: 8px; padding: 14px 16px; background: var(--accent-soft); display: grid; gap: 6px; margin-bottom: 14px; }
+.invite a { font-weight: 700; }
 .notice { border: 2px solid var(--warn); border-radius: 8px; padding: 14px 16px; display: grid; gap: 6px; background: var(--warn-soft); }
 .notice b { color: var(--warn); font-family: var(--f-head); }
 .qa { display: grid; gap: 10px; }
@@ -148,7 +147,7 @@ section { scroll-margin-top: 12px; }
 .closing span { color: var(--sub); font-size: 14px; }
 
 @media (max-width: 640px) {
-  .rules, .kotsu, .compare, .list, .okng { grid-template-columns: 1fr; }
+  .rules, .kotsu, .compare, .okng { grid-template-columns: 1fr; }
   .stages { grid-template-columns: 1fr 1fr; }
   .flow { grid-template-columns: 1fr 1fr; }
   .step { grid-template-columns: 1fr; gap: 2px; }
@@ -158,8 +157,7 @@ section { scroll-margin-top: 12px; }
   :root { --paper:#fff; --ink:#000; --sub:#333; --box:#fff; --code:#f4f4f4; --accent-soft:#eef2f8; --warn-soft:#fff; color-scheme: light; }
   body { font-size: 10.5pt; line-height: 1.65; }
   .wrap { padding: 0; max-width: none; }
-  .copy, .toc { display: none; }
-  .copybox pre { max-height: none; overflow: visible; font-size: 9pt; padding-top: 10px; }
+  .toc { display: none; }
   .links a { padding-block: 0; min-height: 0; }
   section { padding-top: 18px; break-inside: auto; }
   .card, .rule, .flow li, .step, .compare > div { break-inside: avoid; }
@@ -182,6 +180,7 @@ section { scroll-margin-top: 12px; }
     <span>会場：川崎市立橘高等学校</span>
     <span>講師：認定NPO法人CLACK（mirAI for Japan）</span>
   </div>
+  <p class="disclaimer">研修の内容を、記録として筆者が再編しています。研修内での発言と多少異なる部分があります。</p>
 </header>
 <nav class="toc" aria-labelledby="toc-title">
   <h2 id="toc-title" class="toc-title">目次</h2>
@@ -191,12 +190,12 @@ section { scroll-margin-top: 12px; }
     <li><a href="#yakusoku"><span class="n">3</span>使う前に守る3つ</a></li>
     <li><a href="#tetsuduki"><span class="n">4</span>使い始めるまで</a></li>
     <li><a href="#kotsu"><span class="n">5</span>頼み方のコツ</a></li>
-    <li><a href="#jitsurei"><span class="n">6</span>すぐ使えるお願い文3つ</a></li>
+    <li><a href="#jitsurei"><span class="n">6</span>研修で特にあつかった3つ</a></li>
     <li><a href="#ippo"><span class="n">7</span>1週間で試すなら</a></li>
     <li><a href="#koshi"><span class="n">8</span>講師のことば</a></li>
     <li><a href="#shitsumon"><span class="n">9</span>講師への質問</a></li>
     <li><a href="#dankai"><span class="n">10</span>使い方の4段階</a></li>
-    <li><a href="#ichiran"><span class="n">11</span>お願い文の一覧</a></li>
+    <li><a href="#ichiran"><span class="n">11</span>配られたお願い文</a></li>
     <li><a href="#shiryo"><span class="n">12</span>もっと知りたい人へ</a></li>
   </ol>
 </nav>
@@ -207,7 +206,7 @@ section { scroll-margin-top: 12px; }
     <ol>
       <li>AIは<mark>「ゼロから考える時間」を減らす下書き係</mark>。仕上げと判断は先生がする。「使うか使わないか」ではなく、「どう使うか」を考える時期に来ている。</li>
       <li>うまく使うコツは、AIへの頼み方。<mark>「誰として・何のために・どんな条件で・どんな形で」</mark>を書くだけで答えが変わる。</li>
-      <li>研修では、そのまま写して使える<mark>「お願い文」が約40種類</mark>配られた。授業・担任・事務・部活と進路まで、ほぼ全部の場面にある。</li>
+      <li>研修では、授業・担任業務・事務・部活動・進路など、<mark>さまざまな仕事で活きるお願い文の案</mark>も紹介された。</li>
     </ol>
   </div>
 </section>
@@ -235,13 +234,14 @@ section { scroll-margin-top: 12px; }
     <div class="rule"><span class="when">できあがったとき</span><strong>中身は必ず確かめる</strong><p>AIはまちがいをもっともらしく書くことがある。事実・数字・人名は自分で確認する。</p></div>
     <div class="rule"><span class="when">使うとき</span><strong>他人の作品をまねない</strong><p>できた文章や絵が、誰かの作品とそっくりになっていないか見てから使う。</p></div>
   </div>
-  <p>実際に、東京都の高校で、文化祭のパンフレットの絵をAIで作って配ったところ、あるイラストレーターの絵とそっくりで問題になった例が紹介されました。</p>
+  <p>実際に、ある高校で、文化祭のパンフレットの絵をAIで作って配ったところ、あるイラストレーターの絵とそっくりで問題になった例が紹介されました。</p>
   <h3>教科書をAIに読み込ませて問題を作ってもいい？</h3>
+  <p>研修では、次のような考え方が紹介されました。ただし、はっきり言い切れるものではありません。</p>
   <div class="okng">
-    <div class="ok"><b>授業で使うためならOK</b><p>授業の問題やワークシートを作るために、教科書や資料を読み込ませるのは、原則として認められている（著作権法35条）。</p></div>
-    <div class="ng"><b>問題集の代わりはNG</b><p>市販のドリルや問題集を買わなくて済むほど大量に作って配る、といった使い方は、出版社の利益をうばうのでだめ。</p></div>
+    <div class="ok"><b>授業の過程で使うなら、認められる場合がある</b><p>授業で必要な範囲であれば、著作権者の許可がなくても複製できる、という決まり（著作権法35条）があり、AIを使う場面にも当てはまり得る、とされている。</p></div>
+    <div class="ng"><b>問題集の代わりにするのは避ける</b><p>市販のドリルや問題集を買わなくて済むほど大量に作って配る、といった使い方は、著作権者の利益をうばうおそれがある。</p></div>
   </div>
-  <p class="note">生徒の家庭学習も同じ考え方です。自分の勉強に使うのはOK、作ったものを外に出す（SNSにのせる・配る）のはNG、やりすぎ（丸ごと読み込ませる）は注意。</p>
+  <p class="note">出版社によっては生成AIでの利用に制限を示していたり、AIの道具の側で著作物の入力を制限していたりすることもあります。<b>実際に使うときは、各出版社・ツールの規約や指示に従い、詳しくは都道府県のガイドラインや関連する法律を確かめてください。</b>この報告も、権利に関わることを正確に言い切るものではありません。</p>
   <div class="notice">
     <b>川崎市のいまのルール：AIで作った画像は校外に出さない</b>
     <p>研修の最後に、主催側から連絡がありました。AIで作った画像は、授業の中で使うのはよいが、学年通信・学級通信などで校外に出すことは、いまの情報・視聴覚センターのルールではできない、とのことです。11月ごろに緩和の通知が出る予定で、使えるようになったら管理職から連絡があるそうです。ルールは研修のClassroomにも載っています。</p>
@@ -277,86 +277,29 @@ section { scroll-margin-top: 12px; }
     <div class="good"><span class="tag">部品を入れた頼み方</span><p>あなたは高校1年の担任です。保護者会のあいさつを、3分程度で、自己紹介・クラスの様子・今後の方針の順に書いてください。「一緒に育てていきたい」という気持ちを伝えたいです。</p><p class="note">→ そのまま手直しに入れる下書きになる。</p></div>
   </div>
   <p class="note">入力欄で改行するときは <b>Shift＋Enter</b>。Enterだけだと、途中で送ってしまいます。多少の誤字や、整っていない文でもAIは読み取ってくれます。</p>
-  <p class="note">お願い文に出てくる「#」は見出しの印です。気にせずそのまま貼ってかまいません。「〇〇〇」のところだけ自分の内容に書きかえます。</p>
+  <p class="note">慣れてきたら、「# 依頼」「# ルール」「# 出力形式」のように<b>見出しで区切って</b>書くと、AIが読み違えにくくなります。</p>
 </section>
 
 <section id="jitsurei" class="pb">
   <h2><span class="no">実例</span>研修で特にあつかった3つ</h2>
-  <p class="lead">時間がかかる仕事ほど効果が大きい、という話でした。下の箱の文をコピーして、〇〇〇を書きかえて使えます。</p>
+  <p class="lead">時間がかかる仕事ほど効果が大きい、という話でした。研修で使ったお願い文そのものは、受講者向けの資料のため載せていません。ここでは使い方のポイントだけを紹介します。</p>
 
   <div class="card">
     <span class="scene">授業｜小テスト・練習問題づくり</span>
     <h3>まちがえやすい所をつく4択問題を作る</h3>
-    <div class="copybox"><button class="copy" type="button">コピー</button><pre># 依頼
-あなたは日本の高校で〇年生の〇〇〇の授業を担当する教員です。
-生徒向けの練習問題として、〇〇〇に関する選択問題を作成してください。
-
-# ルール
-・間違いの選択肢は「生徒が陥りやすい勘違い」に基づいて作成すること。
-・各問題に、正解だけでなく「なぜその誤答を選んでしまうのか」という解説をつけること。
-
-# 出力形式
-・問題文
-・AからDまでの4択の選択肢
-・解答
-・解説
-・誤答の分析</pre></div>
     <p class="tip">授業で使ったプリントやスライドを添付して「この資料をもとに」と書くと、授業に合った問題になる。添付する前に名前などは消す。物足りなければ「国公立大レベルに」「共通テストを意識して」と言い返すと、作り直してくれる。</p>
   </div>
 
   <div class="card">
     <span class="scene">担任｜通知表・指導要録の所見</span>
     <h3>所見の文例を3案もらう</h3>
-    <div class="copybox"><button class="copy" type="button">コピー</button><pre># 依頼
-あなたは高等学校〇年生のベテラン担任です。
-次のルールを必ず守り、生徒の特徴をもとに、高校の通知表の所見を表形式で出力してください。
-
-# 生徒の特徴
-・〇〇〇（性格）
-・〇〇〇（係・委員会・部活など）
-・〇〇〇（がんばっていること）
-
-# ルール
-・案は3個挙げてください。
-・250〜300文字で書いてください。
-・参照の文を例にしてください。
-
-# 形式
-・表形式
-・列は「案1」「案2」「案3」
-
-# 参照
-（自分が以前に書いた所見を1つ、名前を消して貼る）</pre></div>
-    <p class="tip">生徒の名前は入れない。特徴だけを書く。「参照」に自分が前に書いた所見を入れると、自分らしい書きぶりに近づく。クラス全員分は、特徴を表にまとめて（名前は入れない）添付すると一度に頼める。ただし40人分を一度に頼むと抜けが出やすいので、「1〜10番まで」のように分けて頼む。</p>
+    <p class="tip">生徒の名前は入れない。特徴だけを書く。自分が前に書いた所見を見本として貼ると、自分らしい書きぶりに近づく。クラス全員分は、特徴を表にまとめて（名前は入れない）添付すると一度に頼める。ただし40人分を一度に頼むと抜けが出やすいので、「1〜10番まで」のように分けて頼む。</p>
   </div>
 
   <div class="card">
     <span class="scene">進路｜志望理由書を見るとき</span>
     <h3>志望理由書の添削と、生徒へのアドバイスを分けて出す</h3>
-    <div class="copybox"><button class="copy" type="button">コピー</button><pre># 依頼
-あなたは高校生の志望理由書を専門に添削・指導するプロの指導者です。
-高校生が【〇〇大学〇〇学部】に提出するために書いた志望理由書を、添削ポイントと添削方針に基づいて丁寧に添削してください。
-
-# 志望理由（原文）
-〇〇〇
-
-# 添削ポイント
-1. 進学・就職の目的がはっきりしているか
-2. 相手（学校・学部・企業）のことを調べた跡があるか
-3. 本人の具体的な経験が入っているか
-4. 導入→理由→経験→将来 の順で自然に読めるか
-5. 将来の姿と志望先がつながっているか
-
-# 添削方針
-・高校生らしい表現は残し、幼すぎる表現は直す
-・内容が薄いときは、何を足せばよいかを指導として示す
-・書きかえすぎず、「なぜ直すのか」をはっきりさせる
-
-# 出力形式
-【① 添削後の文章】
-【② 生徒への指導ポイント】
-【③ 主な修正箇所とその理由】</pre></div>
-    <p class="tip">①をそのまま渡すのではなく、②を面談で使うと、生徒が自分で書き直せる。「添削ポイント」は例なので、学校や大学に合わせて足したり変えたりしてよい、と講師も話していた。</p>
+    <p class="tip">「添削後の文章」と「生徒への指導ポイント」を分けて出させるのがポイント。直した文をそのまま渡すのではなく、指導ポイントを面談で使うと、生徒が自分で書き直せる。どこを見て添削するかは、学校や大学に合わせて変えてよい、と講師も話していた。</p>
   </div>
 </section>
 
@@ -366,7 +309,7 @@ section { scroll-margin-top: 12px; }
   <div class="steps">
     <div class="step"><span class="day">まず</span><p>チェックリストを出して、使える状態にする。</p></div>
     <div class="step"><span class="day">1日目 5分</span><p><b>メールの文面</b>を頼んでみる。「以下の内容でメールの本文と件名を考えて。丁寧な敬語で、簡潔に」＋伝えたいことを箇条書き。</p></div>
-    <div class="step"><span class="day">2〜3日目</span><p><b>小テストの問題</b>を作らせてみる。上の「4択問題」のお願い文をコピーして、単元名だけ書きかえる。</p></div>
+    <div class="step"><span class="day">2〜3日目</span><p><b>小テストの問題</b>を作らせてみる。「〇年生の〇〇の授業で使う4択問題を。まちがいの選択肢は生徒がしやすい勘違いから」のように、5つの部品を入れて頼む。</p></div>
     <div class="step"><span class="day">週の後半</span><p>気に入らない答えが来たら、<b>「もっと短く」「高1向けに」「別の案を3つ」</b>と言い返してみる。何度でも直してくれるのが人との一番のちがい。最初から100点を期待しない。</p></div>
     <div class="step"><span class="day">いつでも</span><p>話題が変わったら<b>「新しいチャット」</b>を開く。前の話が残っていると、答えがずれる。急ぐときは速いモード、正確さがほしいときはじっくり考えるモードを選ぶ。</p></div>
   </div>
@@ -380,7 +323,7 @@ section { scroll-margin-top: 12px; }
     <blockquote><p>AIが広がって先生の役わりがうすくなるのではなく、むしろ価値は高まる。出てきたものを見きわめ、子どもに何を届けるかを考えるのは先生だから。</p><cite>文部科学省のガイドラインの紹介で</cite></blockquote>
     <blockquote><p>一度で完ぺきなものはねらわない。部分ごとに頼んで、会話しながら直して、最後に合わせる。自分も毎日そうしている。</p><cite>頼み方の練習のあとで</cite></blockquote>
     <blockquote><p>配ったお願い文は、きっかけにすぎない。「これをAIに任せたらよかった」「このお願い文が効いた」と、先生どうしで話して広げてほしい。</p><cite>お願い文の一覧を紹介して</cite></blockquote>
-    <blockquote><p>読みきれない長い資料（文化庁の著作権の手引きなど）こそ、AIに読ませて「先生に関係するところだけまとめて」と頼めばよい。</p><cite>著作権の話の中で</cite></blockquote>
+    <blockquote><p>読みきれない長い資料（文化庁の著作権の手引きなど）こそ、AIに読ませて「先生に関係するところだけまとめて」と頼めばよい。ただし、出てきた内容は原文にあたって確かめる（ファクトチェックする）ことが前提。</p><cite>著作権の話の中で</cite></blockquote>
     <blockquote><p>こわがらせて終わりたくない。正しくおそれたうえで、便利に使ってほしい。</p><cite>まとめで</cite></blockquote>
   </div>
 </section>
@@ -389,10 +332,10 @@ section { scroll-margin-top: 12px; }
   <h2><span class="no">質問</span>講師への質問</h2>
   <p class="lead">報告者が最後に質問しました。「続けにくさ」をどうするか、という質問です。</p>
   <div class="qa">
-    <div class="q"><span class="who">問</span><p>お願い文をコピーして、〇〇〇のところを書きかえる。この手間で止まってしまう先生が多いと思います。よく使うお願い文をGemなどに入れて共有する、といった実例はありますか。</p></div>
-    <div class="a"><span class="who">答</span><p>学校ごとに作りこむことはしていないが、教科ごとに使える「専用のAI」は作っている。たとえば探究と数学を組み合わせたものでは、生徒の興味（「犬が好き」など）から、どんなデータを集めて分析すればよいかを一緒に考えてくれる。こうした専用のAIやGemを作って共有し、最初の一歩のハードルを下げるのは有効だと、多くの学校と話していて感じている。ただし、よい面だけではないことも考えておく必要がある。</p></div>
+    <div class="q"><span class="who">問</span><p>お願い文をコピーして、〇〇〇のところを書きかえる。この手間で止まってしまう先生が多いと思います。よく使うお願い文をカスタムAIなどに入れて共有する、といった実例はありますか。</p></div>
+    <div class="a"><span class="who">答</span><p>学校ごとに作りこむことはしていないが、教科ごとに使える「専用のAI」は作っている。たとえば探究と数学を組み合わせたものでは、生徒の興味（「犬が好き」など）から、どんなデータを集めて分析すればよいかを一緒に考えてくれる。こうした専用のAI（カスタムAI）を作って共有し、最初の一歩のハードルを下げるのは有効だと、多くの学校と話していて感じている。ただし、よい面だけではないことも考えておく必要がある。</p></div>
   </div>
-  <p class="note">この答えを受けて、校内でもよく使うお願い文をGemにまとめて共有することを考えています（下の「4段階」の4にあたります）。</p>
+  <p class="note">この答えを受けて、校内でもよく使うお願い文をカスタムAIにまとめて共有することを考えています（下の「4段階」の4にあたります）。</p>
 </section>
 
 <section id="dankai">
@@ -404,7 +347,7 @@ section { scroll-margin-top: 12px; }
     <li class="next"><span class="lv">3　次の目標</span><b>いっしょに磨く</b>「もっと短く」「別の案を」と言い返して、何度も直す。</li>
     <li><span class="lv">4</span><b>くり返しを仕組みにする</b>よく使う頼み方をしまっておき、毎回同じ流れで使う。</li>
   </ol>
-  <p class="note">4の例：Geminiの「Gem」という機能に、よく使うお願い文を登録しておくと、毎回コピーして貼らずに済みます。登録したものは同僚と共有することもできます。</p>
+  <p class="note">4の例：よく使うお願い文を<b>カスタムAI</b>として登録しておくと、毎回コピーして貼らずに済みます。登録したものは同僚と共有することもできます。</p>
 </section>
 
 <section>
@@ -415,74 +358,26 @@ section { scroll-margin-top: 12px; }
 </section>
 
 <section id="ichiran">
-  <h2><span class="no">一覧</span>配られたお願い文（約40種類）</h2>
-  <p class="lead"><span class="star">★</span>は研修で特にあつかったもの。全文は研修資料「プロンプト一覧」にあります。</p>
-  <div class="list">
-    <div><h3>授業</h3><ul>
-      <li>単元の指導計画／1時間の授業案</li>
-      <li>授業の始めに興味を引く話（3案）</li>
-      <li>生徒から出そうな質問の洗い出し</li>
-      <li>スライドの構成案</li>
-      <li><span class="star">★</span>問題づくり／資料からの問題づくり／似た問題づくり</li>
-      <li>評価の観点表（A・B・C）づくり</li>
-      <li>文章の手直し・翻訳、小論文・英作文の添削</li>
-      <li>記述問題の採点、テスト結果の分析</li>
-      <li>話し合い活動の設計、探究の問いを一緒に考える相談相手（生徒用）</li>
-    </ul></div>
-    <div><h3>担任</h3><ul>
-      <li>文化祭の企画タイトル案（LHR用）</li>
-      <li>学年目標・スローガン案</li>
-      <li>席がえの座席表</li>
-      <li>あいさつ原稿、保護者向けプリント、学年・学級通信</li>
-      <li>校外学習の行程表</li>
-      <li>メールの文面・返信</li>
-      <li>面談で使う質問リスト、ふり返りシート</li>
-      <li><span class="star">★</span>通知表・指導要録の所見の文例</li>
-      <li>アンケート結果の分析</li>
-    </ul></div>
-    <div><h3>事務</h3><ul>
-      <li>Excelの計算式づくり</li>
-      <li>保護者からの意見への返信文</li>
-      <li>購入・導入のための稟議書</li>
-      <li>自己評価シートの方策づくり</li>
-    </ul></div>
-    <div><h3>部活動・進路</h3><ul>
-      <li>練習メニュー、試合前の気持ちの整え方</li>
-      <li><span class="star">★</span>志望理由書の添削</li>
-      <li>模擬面接の質問と流れ</li>
-      <li>大学への推薦書のたたき台</li>
-      <li>進路を考える・オープンキャンパスの準備（生徒用）</li>
-    </ul></div>
-  </div>
+  <h2><span class="no">一覧</span>配られたお願い文</h2>
+  <p>研修では、<b>授業／担任業務／事務／部活動／進路</b>など、多様な業務で活きるお願い文の案も共有されました。内容は受講者向けの資料のため、ここでは分野だけを紹介します。</p>
 </section>
 
 <section id="shiryo">
   <h2><span class="no">資料</span>もっと知りたい人へ</h2>
+  <div class="invite">
+    <b>研修を受けてみたい先生へ</b>
+    <p>講師の認定NPO法人CLACKは、学校向けの生成AI研修を無償で実施しています。ご興味のある先生は、こちらからお問い合わせください。</p>
+    <p><a class="url" href="https://mirai.clack.ne.jp/" target="_blank" rel="noopener">mirAI for Japan（認定NPO法人CLACK）</a></p>
+  </div>
   <ul class="links">
-    <li><a class="url" href="https://docs.google.com/document/d/1nufbWmth5cE93h3SpAYhZ-cUX29dHbJVQ83CNYy8FzU/edit" target="_blank" rel="noopener">研修資料：お願い文（プロンプト）一覧</a></li>
     <li><a class="url" href="https://leadingdxschool.mext.go.jp/files/achieve_r5/ai/291000_05.pdf" target="_blank" rel="noopener">他校の例①　指導要録づくりの補助</a></li>
     <li><a class="url" href="https://leadingdxschool.mext.go.jp/files/achieve_r5/ai/272140_06.pdf" target="_blank" rel="noopener">他校の例②　進路指導での活用</a></li>
     <li><a class="url" href="https://leadingdxschool.mext.go.jp/files/achieve_r5/ai/071000_04.pdf" target="_blank" rel="noopener">他校の例③　部活動の練習メニューづくり</a></li>
     <li><a class="url" href="https://www.mext.go.jp/a_menu/other/mext_02412.html" target="_blank" rel="noopener">文部科学省　生成AIの利用に関するガイドライン</a></li>
     <li><a class="url" href="https://www.bunka.go.jp/seisaku/chosakuken/aiandcopyright.html" target="_blank" rel="noopener">文化庁　AIと著作権について</a></li>
   </ul>
-  <p class="note screen-only">研修資料のリンクが開けない場合は、報告者に声をかけてください。</p>
 </section>
 
-<footer>この報告は、研修で配られた資料（講師スライド・お願い文一覧）、研修の録音と、川崎市総合教育センター 情報・視聴覚センター「生成AI利用前研修」資料をもとにまとめました。</footer>
+<footer>この報告は、研修で配られた資料（講師スライド）、研修の録音と、川崎市総合教育センター 情報・視聴覚センター「生成AI利用前研修」資料をもとにまとめました。</footer>
 </div>
 
-<script>
-document.querySelectorAll('.copy').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var pre = btn.parentElement.querySelector('pre');
-    var done = function () { btn.textContent = 'コピーしました'; setTimeout(function () { btn.textContent = 'コピー'; }, 1600); };
-    var fallback = function () {
-      var r = document.createRange(); r.selectNodeContents(pre);
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      btn.textContent = '選択しました。⌘C / Ctrl+C でコピー';
-    };
-    try { navigator.clipboard.writeText(pre.innerText).then(done, fallback); } catch (e) { fallback(); }
-  });
-});
-</script>
